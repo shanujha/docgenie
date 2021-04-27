@@ -10,16 +10,21 @@ const CodeBlock = ({ language, value }) => {
   );
 };
 
-const Document = ({ content, data }) => {
-  const frontmatter = data;
-  console.log(JSON.stringify(content));
+let docs;
+if (typeof window !== "undefined") {
+  docs = localStorage.getItem("documents");
+} else {
+  docs = JSON.stringify([]);
+}
+const Document = (props) => {
+  let currentDocument = docs ? JSON.parse(docs).filter((x) => x.title === props.title)[0] : {};
+  let content = currentDocument.content;
   return (
     <>
       <Link href="/">
         <button>Back</button>
       </Link>
-      <h1>{frontmatter.title}</h1>
-      <h3>{frontmatter.description}</h3>
+      <h1>{props.title}</h1>
       <ReactMarkdown
         escapeHtml={true}
         source={content}
@@ -33,9 +38,5 @@ export default Document;
 
 Document.getInitialProps = async (context) => {
   const { document } = context.query;
-  // Import our .md file using the `slug` from the URL
-  const content = await import(`content/${document}.md`);
-  const data = matter(content.default);
-
-  return { ...data };
+  return { title: document };
 };

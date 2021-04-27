@@ -14,9 +14,6 @@ const CodeBlock = ({ language, value }) => {
 const DocumentPreview = ({ content, title }) => {
   return (
     <>
-      <Link href="/">
-        <button>Back</button>
-      </Link>
       <h1>{title}</h1>
       <ReactMarkdown
         escapeHtml={true}

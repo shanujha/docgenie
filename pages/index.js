@@ -1,4 +1,4 @@
-import DocumentFeed from "@components/DocumentFeed";
+import DocumentFeed from "../components/DocumentFeed";
 import Head from "next/head";
 import Link from "next/Link";
 import React from "react";

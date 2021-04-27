@@ -2,7 +2,7 @@
  * Create a new document here...
  */
 
-import { MarkdownTextEditor } from "components/MarkdownTextEditor";
+import { MarkdownTextEditor } from "../components/MarkdownTextEditor";
 import Link from "next/link";
 
 export const CreateDocument = () => {
